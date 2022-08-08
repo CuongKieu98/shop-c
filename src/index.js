@@ -3,13 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "~/App";
 import reportWebVitals from "./reportWebVitals";
 import GlobalStyle from "./components/GlobalStyle";
+import { createStore } from "redux";
+import reducers from "./reducers/reducer";
+import { Provider } from "react-redux";
 
+const store = createStore(
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GlobalStyle>
-      <App />
-    </GlobalStyle>
+    <Provider store={store}>
+      <GlobalStyle>
+        <App />
+      </GlobalStyle>
+    </Provider>
   </React.StrictMode>
 );
 

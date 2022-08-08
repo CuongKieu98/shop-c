@@ -5,7 +5,7 @@ function LabelField({ title, setIcon }) {
   let Icon = setIcon;
   return (
     <div>
-      <a href="#">
+      <a href="/">
         <span className="icon-nav">
           <Icon className="icon-bs" />
         </span>
