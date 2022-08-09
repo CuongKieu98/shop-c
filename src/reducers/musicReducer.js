@@ -1,24 +1,7 @@
-// import musicDB from "../db/music";
+ import musicDB from "./../assets/db/music";
 
 export const initialState = {
-    playlists:{
-        
-            id: 0,
-            name: "Shakedown",
-            author_name: "Clarx",
-            img: "shakedown.jpg",
-            lang: "ENGLISH",
-            timesPlayed: 0,
-            type: "electronic",
-            musicName: "Illusion.mp3",
-            attribution: {
-                song: "Clarx - Shakedown [NCS Release]",
-                musicBy: "NoCopyrightSounds",
-                download: "http://ncs.io/Shakedown",
-                stream: "http://youtu.be/qJT0mc3q6Lg"
-            }
-        
-    },
+    playlists:musicDB,
     playing:null,
     bannerOpen: false,
     search:null,
@@ -41,9 +24,9 @@ const musicReducer = (state=initialState,action) => {
                 ...state,
                 bannerOpen: action.payload
             };
-        // case "INC_TIMES_PLAYED":
-        //     musicDB[action.payload].timesPlayed += 1;
-        //     return state;
+        case "INC_TIMES_PLAYED":
+            musicDB[action.payload].timesPlayed += 1;
+            return state;
         case "SET_SEARCH_QUERY":
             return {
                 ...state,

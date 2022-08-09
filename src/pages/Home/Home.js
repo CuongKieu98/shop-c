@@ -7,6 +7,7 @@ import NowPlaying from "~/components/NowPlayingFooter/NowPlaying";
 import NavigationBottom from "~/components/NavigationBottom/NavigationBottom";
 //redux
 import { useSelector } from "react-redux";
+import NavigationMobile from "~/components/Navigation/NavigationMobile";
 
 function Home() {
   const [screenSize, setScreenSize] = useState(undefined);
@@ -22,11 +23,20 @@ function Home() {
     setCurrMusic(playing);
   }, [playing]);
   const musictest = {
-    id: 1,
-    name: "dasdad",
-    author_name: "dasda",
-    img: "dasd",
+    id: 0,
+    name: "Illusion",
+    author_name: "aspa",
+    img: "shak",
+    lang: "ENGLISH",
+    timesPlayed: 0,
+    type: "electronic",
     musicName: "Illusion.mp3",
+    attribution: {
+      song: "Clarx - Shakedown [NCS Release]",
+      musicBy: "NoCopyrightSounds",
+      download: "http://ncs.io/Shakedown",
+      stream: "http://youtu.be/qJT0mc3q6Lg",
+    },
   };
   useEffect(() => {
     handleResize();
@@ -45,16 +55,17 @@ function Home() {
         </div>
       ) : (
         <>
-          {/* {screenSize <= 970 ? <MobileTopNavigation /> : <Navigation />} */}
-          <Navigation />
+          {screenSize <= 970 ? <NavigationMobile /> : <Navigation />}
           <section className={"home-music-container"}>
             <div className="sidebar-home">
-              {/* <SideBar /> */}
               <SideBar />
             </div>
             {/* <div className="main-home">{Page}</div> */}
           </section>
-          <NowPlaying music={currMusic} />
+          {
+            musictest ? <NowPlaying music={musictest} /> : <></>
+          }
+         
           {/* {bannerOpen && (
             <section className="current-large-banner">
               <CurrentPlayingLarge />
